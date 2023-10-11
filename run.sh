@@ -63,6 +63,13 @@ case $model in
         export DEFAULT_SYSTEM_PROMPT="You are a helpful coding assistant. Use markdown when responding with code."
         export N_GQA=1
         ;;
+    custom)
+        export MODEL_NAME="llama-7b-100k.q8_0.gguf"
+        export MODEL_DOWNLOAD_URL="https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q4_K_M.gguf"
+        export WAIT_TIMEOUT=3600
+        export DEFAULT_SYSTEM_PROMPT="You are a helpful coding assistant. Use markdown when responding with code."
+        export N_GQA=1
+        ;;
     code-13b)
         export MODEL_NAME="code-llama-13b-chat.gguf"
         export MODEL_DOWNLOAD_URL="https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/resolve/main/codellama-13b-instruct.Q4_K_M.gguf"

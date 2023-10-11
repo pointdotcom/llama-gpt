@@ -8,30 +8,30 @@
  fi
 
  # Check if the MODEL_DOWNLOAD_URL environment variable is set
- if [ -z "$MODEL_DOWNLOAD_URL" ]
- then
-     echo "Please set the MODEL_DOWNLOAD_URL environment variable"
-     exit 1
- fi
+#  if [ -z "$MODEL_DOWNLOAD_URL" ]
+#  then
+#      echo "Please set the MODEL_DOWNLOAD_URL environment variable"
+#      exit 1
+#  fi
 
- # Check if the model file exists
- if [ ! -f $MODEL ]; then
-     echo "Model file not found. Downloading..."
-     # Check if curl is installed
-     if ! [ -x "$(command -v curl)" ]; then
-         echo "curl is not installed. Installing..."
-         apt-get update --yes --quiet
-         apt-get install --yes --quiet curl
-     fi
-     # Download the model file
-     curl -L -o $MODEL $MODEL_DOWNLOAD_URL
-     if [ $? -ne 0 ]; then
-         echo "Download failed. Trying with TLS 1.2..."
-         curl -L --tlsv1.2 -o $MODEL $MODEL_DOWNLOAD_URL
-     fi
- else
-     echo "$MODEL model found."
- fi
+#  # Check if the model file exists
+#  if [ ! -f $MODEL ]; then
+#      echo "Model file not found. Downloading..."
+#      # Check if curl is installed
+#      if ! [ -x "$(command -v curl)" ]; then
+#          echo "curl is not installed. Installing..."
+#          apt-get update --yes --quiet
+#          apt-get install --yes --quiet curl
+#      fi
+#      # Download the model file
+#      curl -L -o $MODEL $MODEL_DOWNLOAD_URL
+#      if [ $? -ne 0 ]; then
+#          echo "Download failed. Trying with TLS 1.2..."
+#          curl -L --tlsv1.2 -o $MODEL $MODEL_DOWNLOAD_URL
+#      fi
+#  else
+#      echo "$MODEL model found."
+#  fi
 
 # Build the project
 make build
@@ -40,7 +40,7 @@ make build
 n_threads=$(grep -c ^processor /proc/cpuinfo)
 
 # Define context window
-n_ctx=4096
+n_ctx=100000
 
 # Offload layers to GPU
 n_gpu_layers=10
