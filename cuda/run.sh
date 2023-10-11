@@ -40,7 +40,7 @@ make build
 n_threads=$(grep -c ^processor /proc/cpuinfo)
 
 # Define context window
-n_ctx=100000
+n_ctx=32000
 
 # Offload layers to GPU
 n_gpu_layers=10
